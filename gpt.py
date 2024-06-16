@@ -281,7 +281,7 @@ class FeedForward(nn.Module):
 
 class LayerNorm(nn.Module):
     """
-    Class LayerNorm for applying layer normalisation mechanism.
+    Class LayerNorm for applying layer normalization mechanism.
     """
 
 
