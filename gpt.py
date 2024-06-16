@@ -304,13 +304,13 @@ class LayerNorm(nn.Module):
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """
-        Performs a forward propagation through layer normalisation.
+        Performs a forward propagation through layer normalization.
 
         Args:
             x (torch.Tensor): input tensor with tokens embeddings.
 
         Returns:
-            torch.Tensor: output tensor with tokens embeddings after layer normalisation.
+            torch.Tensor: output tensor with tokens embeddings after layer normalization.
         """
 
         mean = x.mean(-1, keepdim=True)
