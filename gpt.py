@@ -252,11 +252,11 @@ class FeedForward(nn.Module):
 
         super(FeedForward, self).__init__()
 
-        self.feed_forward = nn.Sequential(
+        self.fully_conn_1 = nn.Sequential(
             nn.Linear(d_model, d_feed_forward),
-            nn.ReLU(),
-            nn.Linear(d_feed_forward, d_model)
+            nn.ReLU()
         )
+        self.fully_conn_2 = nn.Linear(d_feed_forward, d_model)
         self.dropout = nn.Dropout(dropout)
 
 
@@ -271,9 +271,11 @@ class FeedForward(nn.Module):
             torch.Tensor: output tensor with tokens embeddings after propagation through feed-forward neural network.
         """
 
-        output = self.feed_forward(x) # (S, T, C)
+        output = self.fully_conn_1(x) # (S, T, C)
 
         output = self.dropout(output) # (S, T, C)
+
+        output = self.fully_conn_2(output) # (S, T, C)
 
         return output
 
